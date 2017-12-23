@@ -141,7 +141,9 @@ class SSHGO:
             if parent.get('level'):
                 nest_parent_node = find_parent_line(parent)
                 if nest_parent_node and len(nest_parent_node['sub_lines']) > 0:
-                    new_node['nest_parent'] = nest_parent_node['sub_lines'][0]
+                    nest_parent = nest_parent_node['sub_lines'][0]
+                    if nest_parent and nest_parent['user'] != '':
+                        new_node['nest_parent'] = nest_parent_node['sub_lines'][0]
 
             parent['sub_lines'].append(new_node)
 
